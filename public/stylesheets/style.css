@@ -6,14 +6,18 @@ a {
   text-decoration: none;
 }
 
+.navbar {
+  background-color: #fce2cf;
+}
+
 .navbar .navbar-brand {
-  color: #4592af;
+  color: #9b4b4b;
   transition: color 0.15s;
   display: flex;
 }
 
 .navbar .navbar-brand:hover {
-  color: #226089;
+  color: #fff;
 }
 
 .navbar .navbar-brand i {
