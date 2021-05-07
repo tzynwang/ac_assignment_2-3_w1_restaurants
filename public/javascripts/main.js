@@ -11,5 +11,8 @@ const controller = {
 
 elementObjects.searchForm.addEventListener('submit', (event) => {
   const userInput = elementObjects.searchFormInput.value
-  if (!controller.inputVerify(userInput)) event.preventDefault()
+  if (!controller.inputVerify(userInput)) {
+    event.preventDefault()
+    window.alert('請至少輸入一個英文或中文字 🥺')
+  }
 })
