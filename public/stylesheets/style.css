@@ -2,12 +2,22 @@ header {
   overflow: hidden;
 }
 
+a {
+  text-decoration: none;
+}
+
 .navbar .navbar-brand {
   color: #4592af;
+  transition: color 0.15s;
+  display: flex;
 }
 
 .navbar .navbar-brand:hover {
   color: #226089;
+}
+
+.navbar .navbar-brand i {
+  margin-right: 0.5rem;
 }
 
 .banner {
@@ -54,9 +64,10 @@ header {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* .card img {
+.card img {
   height: 180px;
-} */
+  object-fit: cover
+}
 
 .card-title {
   overflow: hidden;
@@ -69,29 +80,21 @@ header {
   font-size: 0.8rem;
 }
 
+.badge {
+  background-color: #dc3545;
+}
+
 .restaurant-show-title {
   position: relative;
   top: -100px;
   color: white;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-@media screen and (max-width: 575px) {
-  .card img {
-    height: auto;
-  }
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .restaurant-show-title {
-    font-size: 2rem;
+    font-size: 3rem;
   }
-}
-
-@media screen and (max-width: 992px) {
-  /* .card img {
-    height: 115px;
-  } */
 }
