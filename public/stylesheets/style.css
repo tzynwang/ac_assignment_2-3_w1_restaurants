@@ -94,6 +94,9 @@ a {
 
 .badge {
   background-color: #dc3545;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .restaurant-show-title {

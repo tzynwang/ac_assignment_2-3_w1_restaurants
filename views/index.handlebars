@@ -35,10 +35,15 @@
                 <i class="fas fa-utensils pr-2"></i> {{this.category}}
               </div>
 
-              <span class="badge badge-pill badge-danger font-weight-normal">
-                {{this.rating}}
-                <i class="fas fa-star fa-xs"></i>
-              </span>
+              <div class="badge-and-operation d-flex justify-content-between">
+                <span class="badge badge-pill badge-danger font-weight-normal">
+                  {{this.rating}} ✭
+                </span>
+                <div class="operation-buttons">
+                  <i class="fas fa-edit"></i>
+                  <i class="fas fa-eraser"></i>
+                </div>
+              </div>
 
             </div>
           </div>
