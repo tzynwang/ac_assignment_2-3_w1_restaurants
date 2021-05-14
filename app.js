@@ -44,7 +44,6 @@ app.get('/search', (req, res) => {
 
 app.get('/restaurants/:id/edit', (req, res) => {
   const id = Number(req.params.id)
-  console.log(id)
   const targetRestaurant = restaurantList.results.find((restaurant) => restaurant.id === id)
   const categories = []
   restaurantList.results.forEach(restaurant => {
