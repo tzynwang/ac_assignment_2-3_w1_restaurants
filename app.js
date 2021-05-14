@@ -38,6 +38,16 @@ app.get('/search', (req, res) => {
   res.render('index', { keyword: keywordSpan, matchResult: matchResult, restaurants: searchResult })
 })
 
+app.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  restaurantList.results.forEach((restaurant, index) => {
+    if (restaurant.id === id) {
+      restaurantList.results.splice(index, 1)
+    }
+  })
+  res.redirect('/')
+})
+
 app.listen(port, () => {
   console.log(`Express is running on http://localhost:${port}`)
 })
