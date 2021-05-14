@@ -6,6 +6,9 @@ const expressHandlebars = require('express-handlebars')
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
+
 app.use(express.static('public'))
 
 const restaurantList = require('./restaurant.json')
