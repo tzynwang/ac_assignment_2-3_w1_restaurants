@@ -1,7 +1,17 @@
 <main>
 
   <h2 class="h1 mb-1 restaurant-show-title">{{restaurant.name}}</h2>
+
   <div class="container mb-5">
+    <!-- breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">清單首頁</a></li>
+        <li class="breadcrumb-item active" aria-current="page">餐廳：{{restaurant.name}}</li>
+      </ol>
+    </nav>
+
+    <!-- restaurant detail -->
     <div class="row">
       <div class="col-12 col-md-10 mx-auto">
 
