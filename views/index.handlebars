@@ -40,8 +40,16 @@
                   {{this.rating}} ✭
                 </span>
                 <div class="operation-buttons">
-                  <i class="fas fa-edit"></i>
-                  <i class="fas fa-trash-alt"></i>
+                  <form action="/{{this.id}}/?_method=PUT" method="POST">
+                    <button type="submit" class="btn btn-outline-success btn-sm">
+                      <span class="d-md-none">編輯</span>
+                      <i class="fas fa-edit"></i></button>
+                  </form>
+                  <form action="/{{this.id}}/?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-outline-warning btn-sm">
+                      <span class="d-md-none">刪除</span>
+                      <i class="fas fa-trash-alt"></i></button>
+                  </form>
                 </div>
               </div>
 
