@@ -99,7 +99,8 @@ a {
   align-items: center;
 }
 
-.operation-buttons form {
+.operation-buttons form,
+.operation-buttons div {
   display: inline-block;
   margin: 0 0.25rem;
 }
