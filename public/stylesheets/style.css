@@ -99,17 +99,13 @@ a {
   align-items: center;
 }
 
+.operation-buttons form {
+  display: inline-block;
+  margin: 0 0.25rem;
+}
+
 .operation-buttons i {
-  margin: 0 0.5rem;
-  transition: color 0.15s;
-}
-
-.operation-buttons i:hover {
-  color: #9b4b4b;
-}
-
-.operation-buttons .fa-trash-alt {
-  color: #666666;
+  margin: 0 0.25rem;
 }
 
 .restaurant-show-title {
