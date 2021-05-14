@@ -40,11 +40,11 @@
                   {{this.rating}} ✭
                 </span>
                 <div class="operation-buttons">
-                  <form action="/{{this.id}}/?_method=PUT" method="POST">
-                    <button type="submit" class="btn btn-outline-success btn-sm">
+                  <div>
+                    <a href="/restaurants/{{this.id}}/edit" class="btn btn-outline-success btn-sm">
                       <span class="d-md-none">編輯</span>
-                      <i class="fas fa-edit"></i></button>
-                  </form>
+                      <i class="fas fa-edit"></i></a>
+                  </div>
                   <form action="/{{this.id}}/?_method=DELETE" method="POST">
                     <button type="submit" class="btn btn-outline-warning btn-sm">
                       <span class="d-md-none">刪除</span>
