@@ -24,7 +24,7 @@
       <p>非常抱歉，本清單目前尚未登錄您所查詢的餐廳「{{{ keyword }}}」🥺</p>
       {{/if}}
       {{#each restaurants}}
-      <div class="col-10 col-md-4 mx-auto hover-transform">
+      <div class="col-10 col-md-4 mx-auto hover-transform" data-name="{{this.name}}" data-category="{{this.category}}" data-location="{{this.location}}">
         <a href="/restaurants/{{this.id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name_en}}">
