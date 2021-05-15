@@ -49,18 +49,25 @@ app.get('/search', (req, res) => {
       const keywordSpan = `<span>${keyword}</span>`
       res.render('index', { keyword: keywordSpan, noMatchResult, restaurants: searchResults })
     })
+    .catch(error => console.log(error))
 })
 
 app.get('/restaurants/:id/edit', (req, res) => {
-  const id = Number(req.params.id)
-  const targetRestaurant = restaurantList.results.find((restaurant) => restaurant.id === id)
-  const categories = []
-  restaurantList.results.forEach(restaurant => {
-    if (!categories.includes(restaurant.category)) {
-      categories.push(restaurant.category)
-    }
-  })
-  res.render('edit', { restaurant: targetRestaurant, categories })
+  const id = req.params.id
+  return Restaurant.find()
+    .lean()
+    .then(allRestaurants => {
+      const targetRestaurant = allRestaurants.find((restaurant) => restaurant._id.toString() === id.toString())
+      const categories = []
+      allRestaurants.forEach(restaurant => {
+        if (!categories.includes(restaurant.category)) {
+          categories.push(restaurant.category)
+        }
+      })
+      console.log(targetRestaurant)
+      res.render('edit', { restaurant: targetRestaurant, categories })
+    })
+    .catch(error => console.log(error))
 })
 
 app.put('/restaurants/:id/edit', (req, res) => {
