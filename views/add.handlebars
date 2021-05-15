@@ -1,0 +1,58 @@
+<main>
+
+  <h2 class="h1 mb-1 restaurant-show-title">新增餐廳</h2>
+
+  <div class="container mb-5">
+    <!-- breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">清單首頁</a></li>
+        <li class="breadcrumb-item active" aria-current="page">新增餐廳</li>
+      </ol>
+    </nav>
+
+    <!-- add form -->
+    <form action="/restaurants" method="POST" autocomplete="off">
+      <div class="mb-3">
+        <label for="name" class="form-label">餐廳名稱：</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="name_en" class="form-label">餐廳名稱（英文）：</label>
+        <input type="text" class="form-control" id="name_en" name="name_en" required>
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">類型：</label>
+        <input list="categoryList" class="form-control" id="category" name="category" required>
+        <datalist id="categoryList">
+          {{#each categories}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </datalist>
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">照片（直連網址）：</label>
+        <input type="text" class="form-control" id="image" name="image" required>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">地址：</label>
+        <input type="text" class="form-control" id="location" name="location" required>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">電話：</label>
+        <input type="tel" class="form-control" id="phone" name="phone" required>
+      </div>
+      <div class="mb-3">
+        <label for="rating" class="form-label">評分：</label>
+        <input type="number" step="0.1" class="form-control" id="rating" name="rating" required>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">餐廳描述：</label>
+        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-success">新增餐廳</button>
+      </div>
+    </form>
+  </div>
+</main>
