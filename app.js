@@ -83,10 +83,11 @@ app.put('/restaurants/:id/edit', (req, res) => {
 })
 
 app.delete('/:id', (req, res) => {
-  const id = Number(req.params.id)
-  const toDeleteIndex = restaurantList.results.findIndex(restaurant => restaurant.id === id)
-  restaurantList.results.splice(toDeleteIndex, 1)
-  res.redirect('/')
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .then(targetRestaurant => targetRestaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 app.listen(port, () => {
