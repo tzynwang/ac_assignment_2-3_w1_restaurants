@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const restaurantList = require('./restaurant.json')
 const helpers = handlebarsHelpers()
+const Restaurant = require('./models/restaurant')
 
 app.engine('handlebars', expressHandlebars({ helpers: helpers, defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -18,28 +19,36 @@ app.use(express.static('public'))
 require('./config/mongoose')
 
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  Restaurant.find()
+    .lean()
+    .sort({ _id: 'asc' })
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.log(error))
 })
 
 app.get('/restaurants/:id', (req, res) => {
-  const id = Number(req.params.id)
-  const targetRestaurant = restaurantList.results.find((restaurant) => {
-    return restaurant.id === id
-  })
-  res.render('show', { restaurant: targetRestaurant })
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
 })
 
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
-  const searchResult = restaurantList.results.filter((restaurant) => {
-    return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
-  })
-  let noMatchResult
-  searchResult.length === 0
-    ? noMatchResult = true
-    : noMatchResult = false
-  const keywordSpan = `<span>${keyword}</span>`
-  res.render('index', { keyword: keywordSpan, noMatchResult, restaurants: searchResult })
+  return Restaurant.find()
+    .lean()
+    .then(allRestaurants => {
+      const searchResults = allRestaurants.filter((restaurant) => {
+        return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
+      })
+      let noMatchResult
+      searchResults.length === 0
+        ? noMatchResult = true
+        : noMatchResult = false
+      const keywordSpan = `<span>${keyword}</span>`
+      res.render('index', { keyword: keywordSpan, noMatchResult, restaurants: searchResults })
+    })
 })
 
 app.get('/restaurants/:id/edit', (req, res) => {
