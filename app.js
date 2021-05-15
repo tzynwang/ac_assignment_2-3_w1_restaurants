@@ -4,18 +4,17 @@ const port = 3000
 
 const expressHandlebars = require('express-handlebars')
 const handlebarsHelpers = require('handlebars-helpers')
-const helpers = handlebarsHelpers()
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+const restaurantList = require('./restaurant.json')
+const helpers = handlebarsHelpers()
 
 app.engine('handlebars', expressHandlebars({ helpers: helpers, defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
-
-const methodOverride = require('method-override')
-app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 app.use(express.static('public'))
 
-const restaurantList = require('./restaurant.json')
 require('./config/mongoose')
 
 app.get('/', (req, res) => {
