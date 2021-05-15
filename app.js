@@ -68,11 +68,8 @@ app.put('/restaurants/:id/edit', (req, res) => {
 
 app.delete('/:id', (req, res) => {
   const id = Number(req.params.id)
-  restaurantList.results.forEach((restaurant, index) => {
-    if (restaurant.id === id) {
-      restaurantList.results.splice(index, 1)
-    }
-  })
+  const toDeleteIndex = restaurantList.results.findIndex(restaurant => restaurant.id === id)
+  restaurantList.results.splice(toDeleteIndex, 1)
   res.redirect('/')
 })
 
