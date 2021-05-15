@@ -8,6 +8,7 @@ db.once('open', () => {
     Restaurant.create({
       name: data.name,
       name_en: data.name_en,
+      category: data.category,
       image: data.image,
       location: data.location,
       phone: data.phone,
