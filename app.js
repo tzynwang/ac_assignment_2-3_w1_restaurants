@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 const restaurantList = require('./restaurant.json')
+require('./config/mongoose')
 
 app.get('/', (req, res) => {
   res.render('index', { restaurants: restaurantList.results })
