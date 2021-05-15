@@ -20,6 +20,24 @@ router.get('/', (req, res) => {
 
 // add restaurant (save)
 router.post('/', (req, res) => {
+  // input verify
+  const label = {
+    name: '餐廳名稱',
+    name_en: '餐廳名稱（英文）',
+    category: '類型',
+    image: '照片（直連網址）',
+    location: '地址',
+    phone: '電話',
+    rating: '評分'
+  }
+  const userInput = req.body
+  for (const key in userInput) {
+    if (key !== 'description' && userInput[key].length === 0) {
+      res.render('add', { errorMessage: `請輸入${label[key]}的資料 😌`, userInput })
+      return
+    }
+  }
+
   Restaurant.create({
     name: req.body.name,
     name_en: req.body.name_en,
