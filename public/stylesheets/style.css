@@ -118,6 +118,33 @@ a {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.new-restaurant {
+  position: fixed;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  bottom: 3rem;
+  right: 2rem;
+  font-size: 2rem;
+  background-color: #fce2cf;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
+  color: #9b4b4b;
+  transition: all 0.15s;
+}
+
+.new-restaurant:hover {
+  color: #fff;
+  transform: translateY(-0.5rem) translateX(-0.5rem) scale(1.05, 1.05);
+}
+
+.new-restaurant:visited,
+.new-restaurant:active {
+  color: #9b4b4b;
+}
+
 footer {
   position: fixed;
   bottom: 0;
@@ -134,5 +161,13 @@ footer p {
 @media screen and (min-width: 768px) {
   .restaurant-show-title {
     font-size: 3rem;
+  }
+
+  .new-restaurant {
+    width: 4rem;
+    height: 4rem;
+    bottom: 4rem;
+    right: 3rem;
+    font-size: 2.5rem;
   }
 }
