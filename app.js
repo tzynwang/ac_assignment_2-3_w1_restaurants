@@ -6,7 +6,6 @@ const expressHandlebars = require('express-handlebars')
 const handlebarsHelpers = require('handlebars-helpers')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const restaurantList = require('./restaurant.json')
 const helpers = handlebarsHelpers()
 const Restaurant = require('./models/restaurant')
 
@@ -64,22 +63,24 @@ app.get('/restaurants/:id/edit', (req, res) => {
           categories.push(restaurant.category)
         }
       })
-      console.log(targetRestaurant)
       res.render('edit', { restaurant: targetRestaurant, categories })
     })
     .catch(error => console.log(error))
 })
 
 app.put('/restaurants/:id/edit', (req, res) => {
-  const id = Number(req.params.id)
-  const targetRestaurant = restaurantList.results.find((restaurant) => restaurant.id === id)
-  // 遍歷req.body物件中所有的內容
-  for (const key in req.body) {
-    if (req.body[key].length > 0) {
-      targetRestaurant[key] = req.body[key]
-    }
-  }
-  res.redirect('/')
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .then(targetRestaurant => {
+      console.log(targetRestaurant)
+      for (const key in req.body) {
+        if (req.body[key].length > 0) {
+          targetRestaurant[key] = req.body[key]
+        }
+      }
+      return targetRestaurant.save()
+    })
+    .then(() => res.redirect('/'))
 })
 
 app.delete('/:id', (req, res) => {
