@@ -51,7 +51,6 @@ a {
 
 .form-control::placeholder {
   color: #aaaaaa;
-  font-size: 0.8rem;
 }
 
 .btn-major {
