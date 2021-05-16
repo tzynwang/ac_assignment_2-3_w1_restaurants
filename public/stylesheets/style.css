@@ -99,8 +99,7 @@ a {
   align-items: center;
 }
 
-.operation-buttons form,
-.operation-buttons div {
+.operation-buttons form, .operation-buttons div {
   display: inline-block;
   margin: 0 0.25rem;
 }
@@ -128,21 +127,18 @@ a {
   bottom: 3rem;
   right: 2rem;
   font-size: 2rem;
-  background-color: #fce2cf;
+  background-color: #9b4b4b;
   border-radius: 50%;
   box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
-  color: #9b4b4b;
   transition: all 0.15s;
 }
 
-.new-restaurant:hover {
-  color: #fff;
-  transform: translateY(-0.5rem) translateX(-0.5rem) scale(1.05, 1.05);
+.new-restaurant i {
+  color: #fce2cf;
 }
 
-.new-restaurant:visited,
-.new-restaurant:active {
-  color: #9b4b4b;
+.new-restaurant:hover {
+  transform: translateY(-0.5rem) translateX(-0.5rem) scale(1.05, 1.05);
 }
 
 footer {
@@ -162,11 +158,9 @@ footer p {
   .banner {
     height: 360px;
   }
-
   .restaurant-show-title {
     font-size: 3rem;
   }
-
   .new-restaurant {
     width: 4rem;
     height: 4rem;
