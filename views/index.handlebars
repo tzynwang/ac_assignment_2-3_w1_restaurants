@@ -24,7 +24,8 @@
       <p>非常抱歉，本清單目前尚未登錄您所查詢的餐廳「{{{ keyword }}}」🥺</p>
       {{/if}}
       {{#each restaurants}}
-      <div class="col-10 col-md-4 mx-auto hover-transform" data-name="{{this.name}}" data-category="{{this.category}}" data-location="{{this.location}}">
+      <div class="col-10 col-md-4 mx-auto hover-transform" data-name="{{this.name}}" data-category="{{this.category}}"
+        data-location="{{this.location}}">
         <a href="/restaurants/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name_en}}">
@@ -45,17 +46,37 @@
                       <span class="d-md-none">編輯</span>
                       <i class="fas fa-edit"></i></a>
                   </div>
-                  <form action="/restaurants/{{this._id}}/?_method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-outline-warning btn-sm">
-                      <span class="d-md-none">刪除</span>
-                      <i class="fas fa-trash-alt"></i></button>
-                  </form>
+                  <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#deleteConfirmation{{this._id}}">
+                    <span class="d-md-none">刪除</span>
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
                 </div>
               </div>
 
             </div>
           </div>
         </a>
+      </div>
+      <div class="modal fade" id="deleteConfirmation{{this._id}}" tabindex="-1" aria-labelledby="modal{{this._id}}"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="h5 modal-title" id="modal{{this._id}}">刪除確認</p>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              確定要刪除「{{this.name}}」嗎？
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">算了</button>
+              <form action="/restaurants/{{this._id}}/?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-outline-danger">確認刪除</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
       {{/each}}
     </div>
