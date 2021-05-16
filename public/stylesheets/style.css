@@ -64,6 +64,10 @@ a {
   border-color: #ced4da;
 }
 
+.input-group-text {
+  background-color: #fce2cf;
+}
+
 .hover-transform {
   transition: transform 0.15s;
 }
