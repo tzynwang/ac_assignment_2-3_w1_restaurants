@@ -17,13 +17,29 @@
     </div>
   </div>
 
-  <!-- restaurant list -->
   <div class="container my-5">
-    <div class="row">
+    <!-- filter -->
+    <div class="row filter">
+      <div class="col-10 col-md-12 mx-auto">
+        <div class="input-group mb-4">
+          <label class="input-group-text" for="sort">餐廳排序：</label>
+          <select class="form-select" id="sort">
+            <option disabled selected>選擇排序規則</option>
+            <option value="asc">A-Z</option>
+            <option value="desc">Z-A</option>
+            <option value="category">類別</option>
+            <option value="location">地區</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- restaurant list -->
+    <div class="row restaurant-list">
       {{#if noMatchResult}}
       <p>非常抱歉，本清單目前尚未登錄您所查詢的餐廳「{{{ keyword }}}」🥺</p>
       {{/if}}
       {{#each restaurants}}
+      <!-- restaurant card -->
       <div class="col-10 col-md-4 mx-auto hover-transform" data-name="{{this.name}}" data-category="{{this.category}}"
         data-location="{{this.location}}">
         <a href="/restaurants/{{this._id}}" class="text-secondary">
@@ -58,6 +74,7 @@
           </div>
         </a>
       </div>
+      <!-- delete confirmation modal -->
       <div class="modal fade" id="deleteConfirmation{{this._id}}" tabindex="-1" aria-labelledby="modal{{this._id}}"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -85,4 +102,5 @@
   <!-- new restaurant button -->
   <a class="new-restaurant" href="/restaurants"><i class="fas fa-plus"></i></a>
 </main>
+<script src="/javascripts/axios.min.js"></script>
 <script src="/javascripts/main.js"></script>

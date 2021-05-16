@@ -28,4 +28,31 @@ router.get('/search', (req, res) => {
     .catch(error => console.log(error))
 })
 
+router.post('/sort', (req, res) => {
+  const sortType = req.body.type
+  let sortColumn
+  switch (sortType) {
+    case 'asc':
+      sortColumn = { name: 'asc' }
+      break
+    case 'desc':
+      sortColumn = { name: 'desc' }
+      break
+    case 'category':
+      sortColumn = { category: 'asc' }
+      break
+    case 'location':
+      sortColumn = { location: 'asc' }
+      break
+    default:
+      res.send({ errorMessage: '唔……排序的類型好像有點問題，請透過下拉選單來排序餐廳卡片唷 😌' })
+      return
+  }
+  Restaurant.find()
+    .lean()
+    .sort(sortColumn)
+    .then(results => res.send(results))
+    .catch(error => console.log(error))
+})
+
 module.exports = router
