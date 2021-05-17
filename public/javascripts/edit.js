@@ -1,7 +1,10 @@
 const elementObjects = {
   citiesSelect: document.querySelector('.cities'),
   sectionsSelect: document.querySelector('.sections'),
-  postCodeDisplay: document.querySelector('.postcode-display')
+  postCodeDisplay: document.querySelector('.postcode-display'),
+  phoneInput: document.querySelector('#phone'),
+  form: document.querySelector('form'),
+  telephoneHintMessage: document.querySelector('.hint-message')
 }
 
 const config = {
@@ -51,6 +54,10 @@ const controller = {
         view.allCitiesSelect(cities)
       }
     })
+  },
+  telephoneVerifyResult (input) {
+    const regularExpression = /^[0-9\-+()\s]+$/
+    return input.match(regularExpression)
   }
 }
 
@@ -61,4 +68,14 @@ elementObjects.citiesSelect.addEventListener('change', (event) => {
   // 篩選出該城市的所有行政區
   const founds = data.parseResult.filter(element => element.city === city)
   view.allSectionsSelect(founds)
+})
+
+// 檢驗電話欄位
+elementObjects.form.addEventListener('submit', (event) => {
+  const userInputPhoneNumber = elementObjects.phoneInput.value
+  const verifyResult = controller.telephoneVerifyResult(userInputPhoneNumber)
+  if (verifyResult === null) {
+    elementObjects.telephoneHintMessage.innerHTML = '電話格式僅限<code>()</code>、<code>-</code>與空格'
+    event.preventDefault()
+  }
 })
