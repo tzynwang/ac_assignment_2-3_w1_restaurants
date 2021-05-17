@@ -41,8 +41,8 @@ router.post('/sort', (req, res) => {
     case 'category':
       sortColumn = { category: 'asc' }
       break
-    case 'location':
-      sortColumn = { location: 'asc' }
+    case 'postcode':
+      sortColumn = { postcode: 'asc' }
       break
     default:
       res.send({ errorMessage: '唔……排序的類型好像有點問題，請透過下拉選單來排序餐廳卡片唷 😌' })
