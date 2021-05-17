@@ -27,9 +27,19 @@
           {{/each}}
         </datalist>
       </div>
-      <div class="mb-3">
-        <label for="location" class="form-label">地址：</label>
-        <input type="text" class="form-control" id="location" name="location" value="{{restaurant.location}}">
+      <label for="address" class="form-label">地址：</label>
+      <div class="input-group mb-3">
+        <input type="number" class="form-control postcode-display" name="postcode" placeholder="郵遞區號" readonly="readonly" value={{restaurant.postcode}} required>
+        {{!-- 城市 --}}
+        <select class="form-select cities" name="city" required>
+          <option selected value={{restaurant.city}}>{{restaurant.city}}</option>
+        </select>
+        {{!-- 行政區 --}}
+        <select class="form-select sections" name="section" required>
+          <option selected value={{restaurant.section}}>{{restaurant.section}}</option>
+        </select>
+        <input type="text" class="form-control" placeholder="地址" name="address" required {{#if restaurant.address}}
+          value="{{restaurant.address}}" {{/if}} style="width: 40%;">
       </div>
       <div class="mb-3">
         <label for="phone" class="form-label">電話：</label>
@@ -45,3 +55,5 @@
     </form>
   </div>
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<script src="/javascripts/edit.js"></script>

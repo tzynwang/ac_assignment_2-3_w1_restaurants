@@ -94,13 +94,13 @@ router.put('/:id/edit', (req, res) => {
   return Restaurant.findById(id)
     .then(targetRestaurant => {
       for (const key in req.body) {
-        if (req.body[key].length > 0) {
+        if (req.body[key].length > 0 && req.body[key] !== undefined) {
           targetRestaurant[key] = req.body[key]
         }
       }
       return targetRestaurant.save()
     })
-    .then(() => res.redirect('/'))
+    .then(() => res.redirect(`/restaurants/${id}`))
 })
 
 // delete restaurant
