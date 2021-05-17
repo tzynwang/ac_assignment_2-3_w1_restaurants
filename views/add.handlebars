@@ -45,10 +45,16 @@
         <input type="text" class="form-control" id="image" name="image" 
         {{#if userInput.image}} value="{{userInput.image}}" {{/if}} required>
       </div>
-      <div class="mb-3">
-        <label for="location" class="form-label">地址：</label>
-        <input type="text" class="form-control" id="location" name="location" 
-        {{#if userInput.location}} value="{{userInput.location}}" {{/if}} required>
+      <label for="address" class="form-label">地址：</label>
+      <div class="input-group mb-3">
+        <input type="number" class="form-control postcode-display" name="postcode" placeholder="郵遞區號" readonly="readonly" required>
+        <select class="form-select cities" name="city" required>
+          <option selected disabled>城市</option>
+        </select>
+        <select class="form-select sections" name="section" required>
+          <option selected disabled>區域</option>
+        </select>
+        <input type="text" class="form-control" placeholder="地址" name="address" required {{#if userInput.address}} value="{{userInput.address}}" {{/if}} style="width: 40%;">
       </div>
       <div class="mb-3">
         <label for="phone" class="form-label">電話：</label>
@@ -71,3 +77,5 @@
     </form>
   </div>
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<script src="/javascripts/add.js"></script>

@@ -27,12 +27,16 @@ router.post('/', (req, res) => {
     category: '類型',
     image: '照片（直連網址）',
     location: '地址',
+    postcode: '郵遞區號',
+    city: '城市',
+    section: '行政區域',
+    address: '地址',
     phone: '電話',
     rating: '評分'
   }
   const userInput = req.body
   for (const key in userInput) {
-    if (key !== 'description' && userInput[key].length === 0) {
+    if (key !== 'description' && (userInput[key].length === 0 || userInput[key] === undefined)) {
       res.render('add', { errorMessage: `請輸入${label[key]}的資料 😌`, userInput })
       return
     }
@@ -44,6 +48,10 @@ router.post('/', (req, res) => {
     category: req.body.category,
     image: req.body.image,
     location: req.body.location,
+    postcode: req.body.postcode,
+    city: req.body.city,
+    section: req.body.section,
+    address: req.body.address,
     phone: req.body.phone,
     google_map: `http://maps.google.com/maps?z=12&t=m&q=${req.body.name}`,
     rating: req.body.rating,

@@ -20,6 +20,21 @@ const restaurantSchema = new Schema({
     required: true
   },
   location: {
+    type: String
+  },
+  postcode: {
+    type: Number,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  section: {
+    type: String,
+    required: true
+  },
+  address: {
     type: String,
     required: true
   },
