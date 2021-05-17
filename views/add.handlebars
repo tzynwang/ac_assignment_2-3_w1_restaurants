@@ -54,7 +54,7 @@
         <select class="form-select sections" name="section" required>
           <option selected disabled>區域</option>
         </select>
-        <input type="text" class="form-control" placeholder="地址" name="address" required {{#if userInput.address}} value="{{userInput.address}}" {{/if}} style="width: 40%;">
+        <input type="text" class="form-control" id="address" placeholder="地址" name="address" required {{#if userInput.address}} value="{{userInput.address}}" {{/if}}>
       </div>
       <div class="mb-3">
         <label for="phone" class="form-label">電話：</label><span class="hint-message"></span>

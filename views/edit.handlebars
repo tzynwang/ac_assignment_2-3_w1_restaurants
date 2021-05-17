@@ -38,8 +38,8 @@
         <select class="form-select sections" name="section" required>
           <option selected value={{restaurant.section}}>{{restaurant.section}}</option>
         </select>
-        <input type="text" class="form-control" placeholder="地址" name="address" required {{#if restaurant.address}}
-          value="{{restaurant.address}}" {{/if}} style="width: 40%;">
+        <input type="text" class="form-control" id="address" placeholder="地址" name="address" required {{#if restaurant.address}}
+          value="{{restaurant.address}}" {{/if}}>
       </div>
       <div class="mb-3">
         <label for="phone" class="form-label">電話：</label>

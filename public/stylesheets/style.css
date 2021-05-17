@@ -63,6 +63,10 @@ a {
   border-color: #ced4da;
 }
 
+#address {
+  width: 40%;
+}
+
 .input-group-text {
   background-color: #fce2cf;
 }
