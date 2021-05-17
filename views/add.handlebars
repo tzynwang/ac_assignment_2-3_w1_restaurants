@@ -57,7 +57,7 @@
         <input type="text" class="form-control" placeholder="地址" name="address" required {{#if userInput.address}} value="{{userInput.address}}" {{/if}} style="width: 40%;">
       </div>
       <div class="mb-3">
-        <label for="phone" class="form-label">電話：</label>
+        <label for="phone" class="form-label">電話：</label><span class="hint-message"></span>
         <input type="tel" class="form-control" id="phone" name="phone"
         {{#if userInput.phone}} value="{{userInput.phone}}" {{/if}} required>
       </div>
