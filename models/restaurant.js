@@ -19,9 +19,6 @@ const restaurantSchema = new Schema({
     type: String,
     required: true
   },
-  location: {
-    type: String
-  },
   postcode: {
     type: Number,
     required: true

@@ -3,14 +3,17 @@ const db = require('../../config/mongoose')
 const rawData = require('../../restaurant.json')
 
 db.once('open', () => {
-  console.log('mongodb connects')
+  console.log('mongodb connect')
   rawData.results.forEach(data => {
     Restaurant.create({
       name: data.name,
       name_en: data.name_en,
       category: data.category,
       image: data.image,
-      location: data.location,
+      postcode: data.postcode,
+      city: data.city,
+      section: data.section,
+      address: data.address,
       phone: data.phone,
       google_map: data.google_map,
       rating: data.rating,
